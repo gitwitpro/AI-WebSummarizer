@@ -7,6 +7,7 @@ from summarizer import summarize_website
 app = Flask(__name__)
 CORS(app)
 
+
 @app.route("/", methods=["GET"])
 def home():
     return jsonify({
@@ -14,13 +15,20 @@ def home():
         "message": "AI Service is running"
     })
 
+
 @app.route("/summarize", methods=["POST"])
 def summarize():
     try:
         data = request.get_json()
 
-        url = data.get("url")
-        style = data.get("style")
+        url = data.get("url") if data else None
+        style = data.get("style") if data else None
+
+        if not url:
+            return jsonify({
+                "success": False,
+                "error": "URL is required"
+            }), 400
 
         summary = summarize_website(url, style)
 
@@ -30,11 +38,11 @@ def summarize():
         })
 
     except Exception as e:
+        print(f"[/summarize] error for url={locals().get('url')}: {e}")
         return jsonify({
             "success": False,
             "error": str(e)
         }), 500
-
 
 
 if __name__ == "__main__":
