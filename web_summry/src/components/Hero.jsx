@@ -31,10 +31,9 @@ function Hero() {
     try {
       setSummary("");
       setLoading(true);
-      setSummary("");
 
       const response = await axios.post(
-        "https://ai-websummarizer.onrender.com/summarize",
+        "https://my-ai-summarizer-api.onrender.com/api/summarize",
         {
           url,
           style: selectedStyle,
@@ -47,7 +46,10 @@ function Hero() {
 
       console.log(error);
 
-      alert("Unable to generate summary.");
+      const backendMessage =
+        error.response?.data?.error || error.response?.data?.message;
+
+      alert(backendMessage || "Unable to generate summary.");
 
     } finally {
 
