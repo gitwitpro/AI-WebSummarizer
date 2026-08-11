@@ -34,7 +34,7 @@ function Hero() {
       setSummary("");
 
       const response = await axios.post(
-        "http://localhost:5000/api/summarize",
+        "https://ai-websummarizer.onrender.com/summarize",
         {
           url,
           style: selectedStyle,
