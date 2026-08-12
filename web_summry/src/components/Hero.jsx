@@ -33,7 +33,7 @@ function Hero() {
       setLoading(true);
 
       const response = await axios.post(
-        "https://my-ai-summarizer-api.onrender.com/api/summarize",
+        "https://ai-websummarizer-node.onrender.com/api/summarize",
         {
           url,
           style: selectedStyle,
