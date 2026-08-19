@@ -4,4 +4,4 @@ gunicorn==26.0.0
 beautifulsoup4==4.15.0
 requests==2.34.2
 python-dotenv==1.2.2
-openai==2.4.1
+openai
