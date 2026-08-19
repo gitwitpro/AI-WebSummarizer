@@ -25,7 +25,7 @@ def summarize(text, style):
     style_prompt = get_style_prompt(style)
 
     response = client.chat.completions.create(
-        model="llama-3.1-8b-instant",
+        model="openai/gpt-oss-20b",
         messages=[
             {
                 "role": "system",
